@@ -57,7 +57,6 @@ jar {
 javadoc {
     def copyrightYear = String.format('%1$tY', System.currentTimeMillis())
     title = "EAN Mobile ${project.name} Docs"
-    exclude 'android'
     options {
         bottom = "<i>Copyright &#169; ${copyrightYear} EAN.com, L.P. All Rights Reserved.</i>"
         use = true
@@ -65,7 +64,7 @@ javadoc {
 }
 
 /******************************************************************************/
-// Checkstyle stuff
+// Add the configuration's output to the checkstyle classpath so the RedundantThrowsCheck doesn't die.
 checkstyleMain {
     classpath += configurations.compile
 }
