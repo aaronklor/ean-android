@@ -28,10 +28,10 @@ package com.ean.mobile.request;
 import java.util.List;
 
 import org.junit.Test;
-
-import com.ean.mobile.Destination;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
+
+import com.ean.mobile.Destination;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThan;

@@ -29,10 +29,10 @@ import java.math.BigDecimal;
 
 import org.json.JSONObject;
 import org.junit.Test;
-
-import com.ean.mobile.JSONFileUtil;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
+
+import com.ean.mobile.JSONFileUtil;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;

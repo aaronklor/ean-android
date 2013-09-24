@@ -27,13 +27,13 @@ package com.ean.mobile.hotel.request;
 
 import org.joda.time.LocalDate;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.robolectric.RobolectricTestRunner;
 
 import com.ean.mobile.hotel.HotelList;
 import com.ean.mobile.hotel.RoomOccupancy;
 import com.ean.mobile.request.DateModifier;
 import com.ean.mobile.request.RequestTestBase;
-import org.junit.runner.RunWith;
-import org.robolectric.RobolectricTestRunner;
 
 import static org.junit.Assert.assertNull;
 

@@ -23,7 +23,6 @@
  * either expressed or implied, of the Expedia Affiliate Network or Expedia Inc.
  */
 
-apply plugin: 'checkstyle'
 apply plugin: 'java'
 apply from: 'publish.gradle'
 apply from: 'clover.gradle'

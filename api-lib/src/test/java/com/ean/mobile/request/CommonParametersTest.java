@@ -34,7 +34,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.powermock.reflect.Whitebox;
+import org.robolectric.RobolectricTestRunner;
 
+import com.ean.mobile.Constants;
 import com.ean.mobile.TestConstants;
 
 import static org.hamcrest.Matchers.equalTo;
@@ -44,9 +46,6 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
-
-import com.ean.mobile.Constants;
-import org.robolectric.RobolectricTestRunner;
 
 @RunWith(RobolectricTestRunner.class)
 public class CommonParametersTest {

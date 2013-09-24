@@ -32,15 +32,14 @@ import java.util.List;
 import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
-
-import com.ean.mobile.Destination;
 import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
+
+import com.ean.mobile.Destination;
 
 import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;

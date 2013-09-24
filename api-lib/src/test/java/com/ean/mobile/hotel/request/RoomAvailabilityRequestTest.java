@@ -36,6 +36,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.robolectric.RobolectricTestRunner;
 
 import com.ean.mobile.JSONFileUtil;
 import com.ean.mobile.TestConstants;
@@ -45,8 +47,6 @@ import com.ean.mobile.hotel.RoomOccupancy;
 import com.ean.mobile.request.CommonParameters;
 import com.ean.mobile.request.DateModifier;
 import com.ean.mobile.request.RequestTestBase;
-import org.junit.runner.RunWith;
-import org.robolectric.RobolectricTestRunner;
 
 import static org.hamcrest.Matchers.empty;
 import static org.hamcrest.Matchers.greaterThan;

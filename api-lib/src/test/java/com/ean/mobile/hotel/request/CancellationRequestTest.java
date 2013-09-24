@@ -31,6 +31,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.robolectric.RobolectricTestRunner;
 
 import com.ean.mobile.JSONFileUtil;
 import com.ean.mobile.TestConstants;
@@ -38,8 +40,6 @@ import com.ean.mobile.exception.EanWsError;
 import com.ean.mobile.hotel.Cancellation;
 import com.ean.mobile.request.CommonParameters;
 import com.ean.mobile.request.RequestTestBase;
-import org.junit.runner.RunWith;
-import org.robolectric.RobolectricTestRunner;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertEquals;

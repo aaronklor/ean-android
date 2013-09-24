@@ -30,6 +30,8 @@ import java.util.List;
 
 import org.joda.time.LocalDate;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.robolectric.RobolectricTestRunner;
 
 import com.ean.mobile.exception.DataValidationException;
 import com.ean.mobile.exception.EanWsError;
@@ -38,8 +40,6 @@ import com.ean.mobile.hotel.RoomOccupancy;
 import com.ean.mobile.request.DateModifier;
 import com.ean.mobile.request.RequestProcessor;
 import com.ean.mobile.request.RequestTestBase;
-import org.junit.runner.RunWith;
-import org.robolectric.RobolectricTestRunner;
 
 import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.Assert.assertEquals;

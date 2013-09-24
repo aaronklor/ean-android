@@ -29,6 +29,8 @@ import java.util.Arrays;
 
 import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.robolectric.RobolectricTestRunner;
 
 import com.ean.mobile.Address;
 import com.ean.mobile.exception.EanWsError;
@@ -37,8 +39,6 @@ import com.ean.mobile.hotel.Reservation;
 import com.ean.mobile.hotel.RoomOccupancy;
 import com.ean.mobile.request.RequestProcessor;
 import com.ean.mobile.request.RequestTestBase;
-import org.junit.runner.RunWith;
-import org.robolectric.RobolectricTestRunner;
 
 import static org.hamcrest.Matchers.isEmptyOrNullString;
 import static org.hamcrest.Matchers.not;

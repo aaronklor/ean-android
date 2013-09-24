@@ -31,6 +31,8 @@ import java.util.List;
 import org.joda.time.LocalDate;
 import org.joda.time.YearMonth;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.robolectric.RobolectricTestRunner;
 
 import com.ean.mobile.Address;
 import com.ean.mobile.Name;
@@ -42,8 +44,6 @@ import com.ean.mobile.hotel.RoomOccupancy;
 import com.ean.mobile.request.DateModifier;
 import com.ean.mobile.request.RequestProcessor;
 import com.ean.mobile.request.RequestTestBase;
-import org.junit.runner.RunWith;
-import org.robolectric.RobolectricTestRunner;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.hasItems;
