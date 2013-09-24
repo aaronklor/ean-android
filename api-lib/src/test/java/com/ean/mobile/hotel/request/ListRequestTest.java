@@ -23,36 +23,32 @@
  * either expressed or implied, of the Expedia Affiliate Network or Expedia Inc.
  */
 
-apply plugin: 'android'
-apply plugin: 'checkstyle'
+package com.ean.mobile.hotel.request;
 
-sourceCompatibility = 1.6
-targetCompatibility = 1.6
+import org.joda.time.LocalDate;
+import org.junit.Test;
 
-buildscript {
-    repositories {
-        mavenCentral()
+import com.ean.mobile.hotel.HotelList;
+import com.ean.mobile.hotel.RoomOccupancy;
+import com.ean.mobile.request.DateModifier;
+import com.ean.mobile.request.RequestTestBase;
+import org.junit.runner.RunWith;
+import org.robolectric.RobolectricTestRunner;
+
+import static org.junit.Assert.assertNull;
+
+@RunWith(RobolectricTestRunner.class)
+public class ListRequestTest extends RequestTestBase {
+
+    private static final RoomOccupancy OCCUPANCY = new RoomOccupancy(1, null);
+
+    @Test
+    public void testConsumeNull() throws Exception {
+        LocalDate[] dateTimes = DateModifier.getAnArrayOfLocalDatesWithOffsets(1, 3);
+        ListRequest listRequest = new ListRequest("rome, it", OCCUPANCY, dateTimes[0], dateTimes[1]);
+
+        HotelList hotelList = listRequest.consume(null);
+
+        assertNull(hotelList);
     }
-
-    dependencies {
-        classpath 'com.android.tools.build:gradle:0.5+'
-    }
-}
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    compile project(':api-lib')
-    compile 'joda-time:joda-time:2.3'
-}
-
-configurations {
-    compile.exclude group: 'com.google.android'
-}
-
-android {
-    compileSdkVersion 18
-    buildToolsVersion "18.0.1"
 }

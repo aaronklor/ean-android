@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright (c) 2013, Expedia Affiliate Network
+    All rights reserved.
+
+    Redistribution and use in source and binary forms, with or without
+    modification, are permitted provided that redistributions of source code
+    retain the above copyright notice, these conditions, and the following
+    disclaimer.
+
+    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+    ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+    WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+    DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+    ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+    (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+    ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+    (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+    The views and conclusions contained in the software and documentation are those
+    of the authors and should not be interpreted as representing official policies,
+    either expressed or implied, of the Expedia Affiliate Network or Expedia Inc.
+-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:background="@color/background">
+    <LinearLayout android:id="@+id/searcher"
+                  android:layout_width="fill_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical">
+        <EditText android:id="@+id/searchBox"
+                  android:layout_width="fill_parent"
+                  android:layout_height="wrap_content"
+                  android:hint="@string/search_bar_autotext"
+                  android:layout_weight="6"
+                  android:editable="true"/>
+
+        <ListView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/suggestionsView"/>
+    </LinearLayout>
+    <LinearLayout android:layout_width="fill_parent"
+                  android:layout_height="wrap_content">
+        <LinearLayout android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:orientation="vertical">
+            <TextView android:id="@+id/arrival_label"
+                      android:layout_width="wrap_content"
+                      android:layout_weight="2"
+                      android:layout_height="0dip"
+                      android:text="@string/arrival"
+                      android:gravity="bottom"
+                      android:textColor="@color/text"/>
+            <Button android:id="@+id/arrival_date_picker"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="5"
+                    android:layout_height="0dip"
+                    android:text="@string/change_the_date"
+                    android:layout_gravity="bottom"
+                    android:onClick="showDatePickerDialog"/>
+        </LinearLayout>
+        <LinearLayout android:layout_width="fill_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="vertical">
+            <TextView android:id="@+id/departure_label"
+                      android:layout_width="wrap_content"
+                      android:layout_weight="2"
+                      android:layout_height="0dip"
+                      android:text="@string/departure"
+                      android:gravity="right"
+                      android:textColor="@color/text"/>
+            <Button android:id="@+id/departure_date_picker"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="5"
+                    android:layout_height="0dip"
+                    android:text="@string/change_the_date"
+                    android:layout_gravity="bottom"
+                    android:onClick="showDatePickerDialog"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout android:layout_width="fill_parent"
+                  android:layout_height="wrap_content">
+        <TextView android:id="@+id/adult_label"
+                  android:layout_width="0dip"
+                  android:layout_weight="40"
+                  android:layout_height="wrap_content"
+                  android:text="@string/adults"
+                  android:gravity="right"
+                  android:textColor="@color/text"/>
+        <Spinner android:id="@+id/adults_spinner"
+                 android:layout_width="0dip"
+                 android:layout_height="wrap_content"
+                 android:layout_weight="97"
+                 android:prompt="@string/number_of_adults_prompt"
+                 android:spinnerMode="dropdown"
+                 android:entries="@array/number_of_adults_array"/>
+    </LinearLayout>
+    <LinearLayout android:layout_width="fill_parent"
+                  android:layout_height="wrap_content">
+        <TextView android:id="@+id/child_label"
+                  android:layout_width="0dip"
+                  android:layout_weight="9"
+                  android:layout_height="wrap_content"
+                  android:text="@string/children"
+                  android:gravity="right"
+                  android:textColor="@color/text"/>
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+"
+                android:id="@+id/child_adder_button"
+                android:layout_gravity="center_horizontal|bottom"
+                android:layout_weight="1"
+                android:onClick="addChildAge"/>
+
+        <TableLayout
+                android:layout_width="0dip"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center_horizontal|top"
+                android:layout_weight="20"
+                android:id="@+id/child_ages_table">
+        </TableLayout>
+    </LinearLayout>
+
+    <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/search_for_hotels"
+            android:id="@+id/button"
+            android:layout_gravity="center"
+            android:onClick="performSearch"/>
+
+</LinearLayout>

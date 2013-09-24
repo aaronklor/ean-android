@@ -23,3 +23,6 @@
  * either expressed or implied, of the Expedia Affiliate Network or Expedia Inc.
  */
 
+wrapper {
+    gradleVersion = 1.7
+}

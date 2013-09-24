@@ -23,36 +23,36 @@
  * either expressed or implied, of the Expedia Affiliate Network or Expedia Inc.
  */
 
-apply plugin: 'android'
-apply plugin: 'checkstyle'
+package com.ean.mobile.hotel;
 
-sourceCompatibility = 1.6
-targetCompatibility = 1.6
+import java.net.MalformedURLException;
 
-buildscript {
-    repositories {
-        mavenCentral()
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.robolectric.RobolectricTestRunner;
+
+import static org.junit.Assert.assertEquals;
+
+@RunWith(RobolectricTestRunner.class)
+public class HotelTest {
+
+    @Test
+    public void testToString() throws JSONException, MalformedURLException {
+        JSONObject stubJsonObject = createJsonObject();
+        Hotel hotel = new Hotel(stubJsonObject);
+        assertEquals("The Benjamin", hotel.toString());
     }
 
-    dependencies {
-        classpath 'com.android.tools.build:gradle:0.5+'
+    private JSONObject createJsonObject() throws JSONException {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("name", "The Benjamin");
+        jsonObject.put("hotelID", 7);
+
+        jsonObject.put("highRate", 4.5d);
+        jsonObject.put("lowRate", 3.5d);
+
+        return jsonObject;
     }
-}
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    compile project(':api-lib')
-    compile 'joda-time:joda-time:2.3'
-}
-
-configurations {
-    compile.exclude group: 'com.google.android'
-}
-
-android {
-    compileSdkVersion 18
-    buildToolsVersion "18.0.1"
 }

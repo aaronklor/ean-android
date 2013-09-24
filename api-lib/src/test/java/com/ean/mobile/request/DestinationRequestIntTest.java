@@ -23,36 +23,41 @@
  * either expressed or implied, of the Expedia Affiliate Network or Expedia Inc.
  */
 
-apply plugin: 'android'
-apply plugin: 'checkstyle'
+package com.ean.mobile.request;
 
-sourceCompatibility = 1.6
-targetCompatibility = 1.6
+import java.util.List;
 
-buildscript {
-    repositories {
-        mavenCentral()
+import org.junit.Test;
+
+import com.ean.mobile.Destination;
+import org.junit.runner.RunWith;
+import org.robolectric.RobolectricTestRunner;
+
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.greaterThan;
+import static org.junit.Assert.assertThat;
+
+@RunWith(RobolectricTestRunner.class)
+public class DestinationRequestIntTest extends RequestTestBase {
+
+    @Test
+    public void testGetDestination() throws Exception {
+        DestinationRequest destinationRequest = new DestinationRequest("sea");
+        List<Destination> results = RequestProcessor.run(destinationRequest);
+        assertThat(results.size(), greaterThan(0));
     }
 
-    dependencies {
-        classpath 'com.android.tools.build:gradle:0.5+'
+    @Test
+    public void testGetDestinationNoResults() throws Exception {
+        DestinationRequest destinationRequest = new DestinationRequest("");
+        List<Destination> results = RequestProcessor.run(destinationRequest);
+        assertThat(results.size(), equalTo(0));
     }
-}
 
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    compile project(':api-lib')
-    compile 'joda-time:joda-time:2.3'
-}
-
-configurations {
-    compile.exclude group: 'com.google.android'
-}
-
-android {
-    compileSdkVersion 18
-    buildToolsVersion "18.0.1"
+    @Test
+    public void testGetDestinationInvalidDestination() throws Exception {
+        DestinationRequest destinationRequest = new DestinationRequest("Death Star");
+        List<Destination> results = RequestProcessor.run(destinationRequest);
+        assertThat(results.size(), equalTo(0));
+    }
 }

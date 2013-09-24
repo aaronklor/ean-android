@@ -24,7 +24,6 @@
  */
 
 // This file created with advice from: http://jedicoder.blogspot.com/2011/11/automated-gradle-project-deployment-to.html
-apply plugin: 'java'
 apply plugin: 'maven'
 apply plugin: 'signing'
 
@@ -35,11 +34,15 @@ group = 'com.ean.mobile'
 version = '1.0.0'
 
 task javadocJar(type: Jar, dependsOn: javadoc) {
+    group = 'Build'
+    description = 'Assembles a jar archive containing the javadoc for the main classes.'
     classifier = 'javadoc'
     from javadoc.destinationDir
 }
 
 task sourcesJar(type: Jar) {
+    group = 'Build'
+    description = 'Assembles a jar archive containing the source for the main classes.'
     classifier = 'sources'
     from sourceSets.main.allSource
 }

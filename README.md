@@ -6,92 +6,62 @@ This project contains two components:
 - sample-app: A sample Android app that uses the api-lib to make all of its calls.
 
 ##Downloading
-The output jars are hosted in Maven Central:
+The output jars are hosted in [Maven Central][mavencentral]:
 
     group: com.ean.mobile
     artifact: api-lib
 
 ##Building both the Library and the App
-It is possible to build the library and the app in a single step using the build.xml at the root of the project. This will build the library, publish it to a local artifactory repository, then resolve the dependencies of the Android project and fix up the local Android files and build the debug configuration of sample-app. 
+It is possible to build the library and the app in a single step using the gradle build at the root of the project.
 
 ###Requirements
 
 - [Java JDK (1.6+)] [java]
-- [Apache Ant (1.7+)] [apache-ant]
 - [Android SDK] [android-sdk] needs to be installed and both the tools and platform-tools directories are assumed to be on the path. Additionally you'll need to have at least Android version 14 setup (4.0 Ice Cream Sandwich).
 
 ###Steps
 
-1. Download the source code from git: `git clone git://ExpediaInc/ean-android/ean-android.git`
-            
+1. Download the source code from git: `git clone git@github.com:ExpediaInc/ean-android.git`
+
 2. Open a command line in the cloned directory: `cd ean-android`
 
-3. Now run the ant target to build the api-lib and sample-app: `ant`
-    - The library has now been built, published to a local artifactory repository, the app has had its dependencies resolved and has been built in the debug configuration.
-    
-4. The output apk can be found at `ean-android/sample-app/bin/sample-app-debug.apk` and can be installed using the command line function `adb install ean-android/sample-app/bin/sample-app-debug.apk`.
+3. Now run the gradle task target to build the api-lib and sample-app: `gradlew :sample-app:assembleDebug`
+    - The library has now been built and imported into sample-app, and its apk built.
+
+4. The output apk can be found at `sample-app/build/apk/sample-app-debug-unaligned.apk` and can be installed using the command line function `adb install sample-app/build/apk/sample-app-debug-unaligned.apk`.
+    - Alternatively, the gradle task `installDebug` can do steps 3 and 4 in one step: `gradlew :sample-app:installDebug`
 
 ##Building Only The Library
 
 ###Requirements
 
 - [Java JDK (1.6+)] [java]
-- [Apache Ant (1.7+)] [apache-ant]
 
 ###Steps
 
-1. Download the source code from git: `git clone git://ExpediaInc/ean-android/ean-android.git`
+1. Download the source code from git: `git clone git@github.com:ExpediaInc/ean-android.git`
 
-2. Open a command line in the cloned directory: `cd ean-android/api-lib`
+2. Open a command line in the cloned directory: `cd ean-android`
 
-3. Run the ant command publish: `ant publish`
+3. Run the gradle task install: `gradlew :api-lib:install`
 
-3. You should now have built the api-lib and published it to the local artifactory repository.
+3. You should now have built the api-lib and published it to the local maven repository in: `~/.m2/`
 
-The build (assuming it worked properly) will have resolved dependencies (creating and populating a lib/ folder in the process), checked the project for style issues, run junit tests, built the javadoc, and built jars to the build/ directory.
-        
-        ean-android/
-            api-lib/
-                build.xml
-                build/
-                    ean-api-lib.jar
-                    ean-api-lib-all.jar
-                lib/
-                    dependencies
-                    
-ean-api-lib.jar contains the minimal set of classes to use the library, whereas ean-api-lib-full.jar contains not only the classes, but their sources and the generated javadoc as well.
+4. The main, javadoc, and source jars can now be found in `api-lib/build/libs/`.
 
-To build without publishing, just run the default ant target `ant`.
+####Without Publishing
 
-##Building Only The Sample App
-
-###Requirements
-
-- [Java JDK (1.6+)] [java]
-- [Apache Ant (1.7+)] [apache-ant]
-- [Android SDK] [android-sdk] needs to be installed and both the tools and platform-tools directories are assumed to be on the path. Additionally you'll need to have at least Android version 14 setup (4.0 Ice Cream Sandwich).
-
-###Steps
-1. Download the source code from git: `git clone git://ExpediaInc/ean-android/ean-android.git`
-    - Ensure the library has already been published as described above.
-
-2. Open a command line in the cloned directory: `cd ean-android/sample-app`
-
-4. Next you will need to use the android command line tool to setup your environment for the project: `android update project -p ./`. This will set up the environment-specific files for the project.
-
-5. Now sample-app can be built using `ant debug` the built project will be output to `ean-android/sample-app/bin/sample-app-debug.apk` and can then be pushed to an Android device or vm with `adb install ean-android/sample-app/bin/sample-app-debug.apk`
+To build without installing to the local repo, just run the assemble task: `gradlew :api-lib:assemble`.
 
 ##IDE Setup Tips
 
+Use the appropriate Gradle plugin for your IDE. For Intellij, this is known as JetGradle. For Eclipse, it is Eclipse-Integration-Gradle. Android Studio comes with the gradle plugin built-in.
+
 ###api-lib
-- Do not include the android.jar on your classpath. The unit tests will be unable to run due to stubbing issues.
-- Include src/app and src/stubs as project files. 
-    - src/stubs provides stub functionality from android.jar for use during development and testing, but does not need to be included with the output jar.
-- Add .json as a resource file type. This will allow certain IDEs (Intellij) to include the .json resources in the classpath for the tests that need them.
+- Add .json as a resource file type. This will allow certain IDEs (Intellij, at least) to include the .json resources in the classpath for the tests that need them.
 
 ###sample-app
-- run ant resolve.dependencies before setting up the project in your ide, as it will include all dependencies necessary.
-- there is no need to include the libs/ivy folder, or the libs/check folder in the ide. These are only used by the build to manage dependencies and perform checkstyle checks, respectively.
+
 
 ## More Help
 
@@ -104,6 +74,6 @@ For a step by step overview of the library and sample app, as well as a guided t
 [git-project]: http://ExpediaInc/ean-android/ean-android.git "ean-android project"
 [git-project-wiki]: https://github.com/ExpediaInc/ean-android/wiki "ean-android project wiki"
 [java]: http://www.oracle.com/technetwork/java/javase/downloads/index.html "Java"
-[apache-ant]: http://ant.apache.org/bindownload.cgi "Apache Ant"
 [android-sdk]: http://developer.android.com/sdk/index.html "Android SDK"
 [docs]: https://github.com/ExpediaInc/ean-android/tree/master/docs "ean-android/docs"
+[mavencentral]: http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22api-lib%22 "api-lib at search.maven.org."

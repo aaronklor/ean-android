@@ -5,7 +5,7 @@
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that redistributions of source code
  * retain the above copyright notice, these conditions, and the following
- * disclaimer. 
+ * disclaimer.
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
@@ -19,7 +19,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * The views and conclusions contained in the software and documentation are those
- * of the authors and should not be interpreted as representing official policies, 
+ * of the authors and should not be interpreted as representing official policies,
  * either expressed or implied, of the Expedia Affiliate Network or Expedia Inc.
  */
 
@@ -44,7 +44,7 @@ import com.ean.mobile.request.Request;
 /**
  * Used to retrieve and parse itinerary information from the EAN API.
  */
-public class ItineraryRequest extends Request<Itinerary> {
+public final class ItineraryRequest extends Request<Itinerary> {
 
     /**
      * Uses the EAN API to search for hotels in the given destination using http requests.
