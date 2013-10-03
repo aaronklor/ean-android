@@ -39,5 +39,6 @@
             android:textSize="20dip"
             android:maxLines="1"
             android:paddingTop="2dip"
-            android:paddingBottom="2dip"/>
+            android:paddingBottom="2dip"
+                  android:textColor="@color/text"/>
 </LinearLayout>

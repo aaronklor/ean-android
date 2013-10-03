@@ -38,7 +38,8 @@
                   android:layout_height="wrap_content"
                   android:hint="@string/search_bar_autotext"
                   android:layout_weight="6"
-                  android:editable="true"/>
+                  android:editable="true"
+                  android:textColor="@color/text"/>
 
         <ListView
                 android:layout_width="fill_parent"
@@ -63,7 +64,8 @@
                     android:layout_height="0dip"
                     android:text="@string/change_the_date"
                     android:layout_gravity="bottom"
-                    android:onClick="showDatePickerDialog"/>
+                    android:onClick="showDatePickerDialog"
+                  android:textColor="@color/text"/>
         </LinearLayout>
         <LinearLayout android:layout_width="fill_parent"
                       android:layout_height="wrap_content"
@@ -81,7 +83,8 @@
                     android:layout_height="0dip"
                     android:text="@string/change_the_date"
                     android:layout_gravity="bottom"
-                    android:onClick="showDatePickerDialog"/>
+                    android:onClick="showDatePickerDialog"
+                  android:textColor="@color/text"/>
 
         </LinearLayout>
     </LinearLayout>
@@ -101,7 +104,8 @@
                  android:layout_weight="97"
                  android:prompt="@string/number_of_adults_prompt"
                  android:spinnerMode="dropdown"
-                 android:entries="@array/number_of_adults_array"/>
+                 android:entries="@array/number_of_adults_array"
+                  android:textColor="@color/text"/>
     </LinearLayout>
     <LinearLayout android:layout_width="fill_parent"
                   android:layout_height="wrap_content">
@@ -120,7 +124,8 @@
                 android:id="@+id/child_adder_button"
                 android:layout_gravity="center_horizontal|bottom"
                 android:layout_weight="1"
-                android:onClick="addChildAge"/>
+                android:onClick="addChildAge"
+                  android:textColor="@color/text"/>
 
         <TableLayout
                 android:layout_width="0dip"
@@ -137,6 +142,7 @@
             android:text="@string/search_for_hotels"
             android:id="@+id/button"
             android:layout_gravity="center"
-            android:onClick="performSearch"/>
+            android:onClick="performSearch"
+                  android:textColor="@color/text"/>
 
 </LinearLayout>

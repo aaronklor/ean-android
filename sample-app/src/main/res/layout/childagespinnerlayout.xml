@@ -17,5 +17,6 @@
             android:focusable="false"
             android:entries="@array/age_of_child_array"
             android:longClickable="true"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+                  android:textColor="@color/text"/>
 </LinearLayout>
