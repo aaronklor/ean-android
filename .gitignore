@@ -19,6 +19,7 @@ out/
 sdcard.*
 build.number.properties
 junit*.properties
+dependencies.txt
 
 # Local configuration file (sdk path, etc)
 local.properties

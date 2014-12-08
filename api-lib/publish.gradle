@@ -33,12 +33,12 @@ apply plugin: 'signing'
 group = 'com.ean.mobile'
 version = '1.0.0'
 
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    group = 'Build'
-    description = 'Assembles a jar archive containing the javadoc for the main classes.'
-    classifier = 'javadoc'
-    from javadoc.destinationDir
-}
+//task javadocJar(type: Jar, dependsOn: javadoc) {
+//    group = 'Build'
+//    description = 'Assembles a jar archive containing the javadoc for the main classes.'
+//    classifier = 'javadoc'
+//    from javadoc.destinationDir
+//}
 
 task sourcesJar(type: Jar) {
     group = 'Build'
@@ -82,7 +82,7 @@ if(buildType == BuildType.RELEASE) {
 
 artifacts {
     archives jar
-    archives javadocJar
+    //archives javadocJar
     archives sourcesJar
 }
 

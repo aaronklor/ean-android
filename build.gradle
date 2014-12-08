@@ -22,21 +22,54 @@
  * of the authors and should not be interpreted as representing official policies,
  * either expressed or implied, of the Expedia Affiliate Network or Expedia Inc.
  */
-
-wrapper {
-    gradleVersion = 1.7
-}
-
 def configDir = new File(rootDir, 'config')
 def checkstyleConfigDir = new File(configDir, 'checkstyle')
 
-
 subprojects {
+    buildscript {
+        repositories {
+            mavenCentral()
+        }
+
+        dependencies {
+            classpath 'com.android.tools.build:gradle:1.0.0'
+        }
+    }
     apply plugin: 'checkstyle'
+
+    repositories {
+        mavenCentral()
+    }
 
     checkstyle.configFile = new File(checkstyleConfigDir, "checkstyle.xml")
     checkstyle.configProperties = [
         suppressions: new File(checkstyleConfigDir, 'checkstyle-suppressions.xml'),
         header: new File(checkstyleConfigDir, 'java.header')
     ]
+
+    if (new File('clover.license').exists()) {
+        apply plugin: 'clover'
+
+        buildscript {
+            repositories {
+                mavenCentral()
+            }
+
+            dependencies {
+                classpath 'org.gradle.api.plugins:gradle-clover-plugin:2.0.1'
+            }
+        }
+        dependencies {
+            clover 'com.atlassian.clover:clover:4.0.2'
+            clover 'commons-cli:commons-cli:1.2'
+        }
+
+        clover {
+            report {
+                html = true
+            }
+        }
+    }
 }
+
+wrapper.gradleVersion = "2.2"

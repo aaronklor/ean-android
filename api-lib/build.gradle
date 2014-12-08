@@ -23,52 +23,55 @@
  * either expressed or implied, of the Expedia Affiliate Network or Expedia Inc.
  */
 
-apply plugin: 'java'
-apply from: 'publish.gradle'
-apply from: 'clover.gradle'
-
-sourceCompatibility = 1.6
-targetCompatibility = 1.6
-
-repositories {
-    mavenCentral()
-}
+apply plugin: 'com.android.library'
+//apply from: 'publish.gradle'
 
 dependencies {
-    compile 'joda-time:joda-time:2.3'
+    compile 'joda-time:joda-time:2.6'
     compile 'com.google.android:android:4.1.1.4'
 
-    testCompile 'junit:junit:4.11'
-    testCompile 'org.hamcrest:hamcrest-all:1.3'
-    testCompile 'org.powermock:powermock-reflect:1.5.1'
-    testCompile 'org.robolectric:robolectric:2.1.1'
+    androidTestCompile 'junit:junit:4.11'
+    androidTestCompile 'org.hamcrest:hamcrest-all:1.3'
+    androidTestCompile 'org.powermock:powermock-reflect:1.5.1'
 }
 
 configurations {
-    testCompile.exclude group: 'org.hamcrest', module: 'hamcrest-core'
+    androidTestCompile.exclude group: 'org.hamcrest', module: 'hamcrest-core'
 }
 
-jar {
-    exclude "android/"
-    exclude '**/package-info.class'
-}
+//jar {
+//    exclude "android/"
+//    exclude '**/package-info.class'
+//}
 
-
-javadoc {
-    def copyrightYear = String.format('%1$tY', System.currentTimeMillis())
-    title = "EAN Mobile ${project.name} Docs"
-    options {
-        bottom = "<i>Copyright &#169; ${copyrightYear} EAN.com, L.P. All Rights Reserved.</i>"
-        use = true
-    }
-}
+//
+//javadoc {
+//    def copyrightYear = String.format('%1$tY', System.currentTimeMillis())
+//    title = "EAN Mobile ${project.name} Docs"
+//    options {
+//        bottom = "<i>Copyright &#169; ${copyrightYear} EAN.com, L.P. All Rights Reserved.</i>"
+//        use = true
+//    }
+//}
 
 /******************************************************************************/
 // Add the configuration's output to the checkstyle classpath so the RedundantThrowsCheck doesn't die.
-checkstyleMain {
-    classpath += configurations.compile
-}
+//checkstyleMain {
+//    classpath += configurations.compile
+//}
+//
+//checkstyleTest {
+//    classpath += configurations.compile
+//}
 
-checkstyleTest {
-    classpath += configurations.compile
+android {
+    compileSdkVersion 19
+    buildToolsVersion "19.1.0"
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 19
+        versionCode 1
+        versionName '1.0'
+    }
 }

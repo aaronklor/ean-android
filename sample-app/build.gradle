@@ -23,36 +23,22 @@
  * either expressed or implied, of the Expedia Affiliate Network or Expedia Inc.
  */
 
-apply plugin: 'android'
-apply plugin: 'checkstyle'
-
-sourceCompatibility = 1.6
-targetCompatibility = 1.6
-
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-
-    dependencies {
-        classpath 'com.android.tools.build:gradle:0.5+'
-    }
-}
-
-repositories {
-    mavenCentral()
-}
+apply plugin: 'com.android.application'
 
 dependencies {
     compile project(':api-lib')
-    compile 'joda-time:joda-time:2.3'
-}
-
-configurations {
-    compile.exclude group: 'com.google.android'
+    compile 'joda-time:joda-time:2.6'
 }
 
 android {
-    compileSdkVersion 18
-    buildToolsVersion "18.0.1"
+    compileSdkVersion 19
+    buildToolsVersion '19.1.0'
+
+    defaultConfig {
+        applicationId 'com.ean.mobile.sampleApp'
+        minSdkVersion 15
+        targetSdkVersion 19
+        versionCode 1
+        versionName '1.0'
+    }
 }
