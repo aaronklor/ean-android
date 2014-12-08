@@ -37,7 +37,7 @@ import android.view.View;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
-import com.ean.mobile.R;
+import com.ean.mobile.sampleApp.R;
 import com.ean.mobile.app.SampleApp;
 import com.ean.mobile.hotel.Reservation;
 

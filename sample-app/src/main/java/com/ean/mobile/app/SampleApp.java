@@ -47,7 +47,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.ean.mobile.Constants;
-import com.ean.mobile.R;
+import com.ean.mobile.sampleApp.R;
 import com.ean.mobile.hotel.Hotel;
 import com.ean.mobile.hotel.HotelImageTuple;
 import com.ean.mobile.hotel.HotelInformation;

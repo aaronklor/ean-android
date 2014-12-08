@@ -57,7 +57,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.ean.mobile.Address;
-import com.ean.mobile.R;
+import com.ean.mobile.sampleApp.R;
 import com.ean.mobile.app.SampleApp;
 import com.ean.mobile.app.SampleConstants;
 import com.ean.mobile.exception.EanWsError;

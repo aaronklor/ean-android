@@ -64,7 +64,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.ean.mobile.Destination;
-import com.ean.mobile.R;
+import com.ean.mobile.sampleApp.R;
 import com.ean.mobile.app.SampleApp;
 import com.ean.mobile.app.SampleConstants;
 import com.ean.mobile.exception.EanWsError;
@@ -119,7 +119,10 @@ public class StartupSearch extends Activity {
      * @param view The view (button) that fired the event.
      */
     public void showDatePickerDialog(final View view) {
-        new DatePickerFragment(view.getId(), (Button) view).show(getFragmentManager(), "StartupSearchDatePicker");
+        DatePickerFragment fragment = new DatePickerFragment(view.getId(), (Button) view);
+        Bundle bundle = new Bundle();
+        fragment.setArguments(new Bundle());
+        fragment.show(getFragmentManager(), "StartupSearchDatePicker");
     }
 
     /**
@@ -232,7 +235,7 @@ public class StartupSearch extends Activity {
         }
     }
 
-    private static final class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
+    public static final class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
 
         private final int pickerId;
 
@@ -247,7 +250,7 @@ public class StartupSearch extends Activity {
         @Override
         public Dialog onCreateDialog(final Bundle savedInstanceState) {
             final LocalDate date;
-            if (pickerId == R.id.arrival_date_picker) {
+            if (getPickerId() == R.id.arrival_date_picker) {
                 date = SampleApp.arrivalDate;
             } else {
                 date = SampleApp.departureDate;
@@ -265,8 +268,8 @@ public class StartupSearch extends Activity {
         public void onDateSet(final DatePicker datePicker, final int year, final int monthOfYear,
                 final int dayOfMonth) {
             final LocalDate chosenDate = new LocalDate(year, monthOfYear + 1, dayOfMonth);
-            pickerButton.setText(DATE_TIME_FORMATTER.print(chosenDate));
-            switch(pickerId) {
+            getPickerButton().setText(DATE_TIME_FORMATTER.print(chosenDate));
+            switch(getPickerId()) {
                 case R.id.arrival_date_picker:
                     SampleApp.arrivalDate = chosenDate;
                     break;
@@ -276,6 +279,14 @@ public class StartupSearch extends Activity {
                 default:
                     break;
             }
+        }
+
+        public int getPickerId() {
+            return pickerId;// getArguments().getInt("pickerId");
+        }
+
+        public Button getPickerButton() {
+            return pickerButton;//(Button) getArguments().get("pickerButton");
         }
     }
 
