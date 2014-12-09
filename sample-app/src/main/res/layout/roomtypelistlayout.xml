@@ -47,8 +47,7 @@
                   android:layout_width="wrap_content"
                   android:textSize="10dip"
                   android:layout_gravity="bottom"/>
-        <include layout="@layout/pricedisplay"
-                 android:layout_gravity="right"/>
+        <include layout="@layout/pricedisplay"/>
 
     </LinearLayout>
     <LinearLayout android:layout_width="fill_parent"

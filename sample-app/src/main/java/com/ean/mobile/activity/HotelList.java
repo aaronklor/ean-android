@@ -74,9 +74,6 @@ public class HotelList extends Activity {
         setContentView(R.layout.hotellist);
         final ListView hotelListView = (ListView) findViewById(R.id.HotelList);
         hotelListView.setOnItemClickListener(new HotelListAdapterListener());
-
-        loadingMoreHotelsToast = Toast.makeText(getApplicationContext(),
-            getString(R.string.loading_more_hotels), Toast.LENGTH_LONG);
     }
 
     /**
@@ -120,7 +117,7 @@ public class HotelList extends Activity {
         public View getView(final int position, final View convertView, final ViewGroup parent) {
             View view = convertView;
             if (view == null) {
-                view = layoutInflater.inflate(R.layout.hotellistlayout, null);
+                view = layoutInflater.inflate(R.layout.hotellistlayout, parent);
             }
 
             //Get the hotel.
@@ -188,6 +185,8 @@ public class HotelList extends Activity {
                     loadingTask = new PerformLoadTask((ArrayAdapter) view.getAdapter());
                 }
                 if (loadingTask.getStatus() == AsyncTask.Status.PENDING) {
+                    loadingMoreHotelsToast = Toast.makeText(getApplicationContext(),
+                        getString(R.string.loading_more_hotels), Toast.LENGTH_LONG);
                     loadingMoreHotelsToast.show();
                     loadingTask.execute((Void) null);
                 }
@@ -237,7 +236,9 @@ public class HotelList extends Activity {
         @Override
         protected void onPostExecute(final Void aVoid) {
             adapter.notifyDataSetChanged();
-            loadingMoreHotelsToast.cancel();
+            if (loadingMoreHotelsToast != null) {
+                loadingMoreHotelsToast.cancel();
+            }
         }
     }
 }

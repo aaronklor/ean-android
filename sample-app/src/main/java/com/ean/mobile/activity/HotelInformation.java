@@ -141,7 +141,7 @@ public class HotelInformation extends Activity {
         View view;
         final LayoutInflater inflater = getLayoutInflater();
         for (HotelRoom room : SampleApp.HOTEL_ROOMS.get(hotel.hotelId)) {
-            view = inflater.inflate(R.layout.roomtypelistlayout, null);
+            view = inflater.inflate(R.layout.roomtypelistlayout, rateList);
 
             final TextView roomDesc = (TextView) view.findViewById(R.id.roomRateDescritpiton);
             roomDesc.setText(room.description);

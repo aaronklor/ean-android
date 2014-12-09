@@ -157,7 +157,7 @@ public class BookingSummary extends Activity {
 
         LocalDate currentDate = SampleApp.arrivalDate.minusDays(1);
         for (NightlyRate rate : SampleApp.selectedRoom.rate.chargeable.nightlyRates) {
-            view = inflater.inflate(R.layout.pricebreakdownlayout, null);
+            view = inflater.inflate(R.layout.pricebreakdownlayout, priceBreakdownList);
             final TextView date = (TextView) view.findViewById(R.id.priceBreakdownDate);
             final TextView highPrice = (TextView) view.findViewById(R.id.priceBreakdownHighPrice);
             final TextView lowPrice = (TextView) view.findViewById(R.id.priceBreakdownLowPrice);

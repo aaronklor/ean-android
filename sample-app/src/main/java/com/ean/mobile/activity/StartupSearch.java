@@ -119,9 +119,10 @@ public class StartupSearch extends Activity {
      * @param view The view (button) that fired the event.
      */
     public void showDatePickerDialog(final View view) {
-        DatePickerFragment fragment = new DatePickerFragment(view.getId(), (Button) view);
+        DatePickerFragment fragment = new DatePickerFragment();
         Bundle bundle = new Bundle();
-        fragment.setArguments(new Bundle());
+        bundle.putInt("pickerId", view.getId());
+        fragment.setArguments(bundle);
         fragment.show(getFragmentManager(), "StartupSearchDatePicker");
     }
 
@@ -162,7 +163,7 @@ public class StartupSearch extends Activity {
      */
     public void addChildAge(final View view) {
         final TableLayout childAges = (TableLayout) findViewById(R.id.child_ages_table);
-        final View childAgeSpinnerView = getLayoutInflater().inflate(R.layout.childagespinnerlayout, null);
+        final View childAgeSpinnerView = getLayoutInflater().inflate(R.layout.childagespinnerlayout, childAges);
         final TableRow childTableRow;
         if (childAges.getChildCount() == 0
                 || ((TableRow) childAges.getChildAt(childAges.getChildCount() - 1)).getChildCount() == 2) {
@@ -237,16 +238,6 @@ public class StartupSearch extends Activity {
 
     public static final class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
 
-        private final int pickerId;
-
-        private final Button pickerButton;
-
-        public DatePickerFragment(final int pickerId, final Button pickerButton) {
-            super();
-            this.pickerId = pickerId;
-            this.pickerButton = pickerButton;
-        }
-
         @Override
         public Dialog onCreateDialog(final Bundle savedInstanceState) {
             final LocalDate date;
@@ -282,11 +273,11 @@ public class StartupSearch extends Activity {
         }
 
         public int getPickerId() {
-            return pickerId;// getArguments().getInt("pickerId");
+            return  getArguments().getInt("pickerId");
         }
 
         public Button getPickerButton() {
-            return pickerButton;//(Button) getArguments().get("pickerButton");
+            return (Button) getActivity().findViewById(getPickerId());
         }
     }
 
@@ -366,7 +357,7 @@ public class StartupSearch extends Activity {
         public View getView(final int position, final View convertView, final ViewGroup parent) {
             View view = convertView;
             if (view == null) {
-                view = layoutInflater.inflate(R.layout.destinationlistlayout, null);
+                view = layoutInflater.inflate(R.layout.destinationlistlayout, parent);
             }
 
             final Destination destination = this.getItem(position);

@@ -75,12 +75,8 @@
                       android:layout_gravity="bottom"
                       android:gravity="bottom">
             <include android:id="@+id/hotelStars"
-                     layout="@layout/starrating"
-                     android:layout_gravity="bottom"
-                     android:layout_marginBottom="2dip"/>
-            <include layout="@layout/pricedisplay"
-                     android:layout_gravity="bottom|right"
-                     android:layout_weight="2"/>
+                     layout="@layout/starrating"/>
+            <include layout="@layout/pricedisplay"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

@@ -93,7 +93,7 @@ public class ReservationDisplay extends Activity {
         }
 
         private View inflateKeyValue(final String key, final Object value) {
-            final View view = inflater.inflate(R.layout.reservationinfolistlayout, null);
+            final View view = inflater.inflate(R.layout.reservationinfolistlayout, table);
 
             final TextView keyView = (TextView) view.findViewById(R.id.reservationinfokey);
             keyView.setText(key);
