@@ -44,7 +44,7 @@ import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TextView;
 
-import com.ean.mobile.sampleApp.R;
+import com.ean.mobile.R;
 import com.ean.mobile.app.HotelImageDrawable;
 import com.ean.mobile.app.ImageFetcher;
 import com.ean.mobile.app.SampleApp;

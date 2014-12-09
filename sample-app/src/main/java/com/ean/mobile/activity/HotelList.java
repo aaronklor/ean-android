@@ -47,7 +47,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ean.mobile.sampleApp.R;
+import com.ean.mobile.R;
 import com.ean.mobile.app.ImageFetcher;
 import com.ean.mobile.app.SampleApp;
 import com.ean.mobile.app.SampleConstants;

@@ -57,7 +57,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.ean.mobile.Address;
-import com.ean.mobile.sampleApp.R;
+import com.ean.mobile.R;
 import com.ean.mobile.app.SampleApp;
 import com.ean.mobile.app.SampleConstants;
 import com.ean.mobile.exception.EanWsError;
@@ -200,8 +200,8 @@ public class BookingSummary extends Activity {
 
         final Spinner cardType = (Spinner) findViewById(R.id.billingInformationCCType);
         final EditText cardNum = (EditText) findViewById(R.id.billingInformationCCNum);
-        final EditText cardExpirationMonth = (EditText) findViewById(R.id.billingInformationCCExpMo);
-        final EditText cardExpirationYear = (EditText) findViewById(R.id.billingInformationCCExpYr);
+        final Spinner cardExpirationMonth = (Spinner) findViewById(R.id.billingInformationCCExpMo);
+        final Spinner cardExpirationYear = (Spinner) findViewById(R.id.billingInformationCCExpYr);
         final EditText cardSecurityCode = (EditText) findViewById(R.id.billingInformationCCSecurityCode);
 
         final int yearsInACentury = 100;
@@ -216,8 +216,8 @@ public class BookingSummary extends Activity {
         cardType.setSelection(
             Arrays.asList(getResources().getStringArray(R.array.supported_credit_cards)).indexOf("CA"));
         cardNum.setText("5401999999999999");
-        cardExpirationMonth.setText("01");
-        cardExpirationYear.setText(Integer.toString((YearMonth.now().getYear() + 1) % yearsInACentury));
+        cardExpirationMonth.setSelection(0);
+        cardExpirationYear.setSelection((YearMonth.now().getYear() + 1) % yearsInACentury);
         cardSecurityCode.setText("123");
 
     }

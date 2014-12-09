@@ -29,7 +29,7 @@ import java.math.BigDecimal;
 
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import com.ean.mobile.sampleApp.R;
+import com.ean.mobile.R;
 
 /**
  * A class to make it easier to populate a star rating layout.

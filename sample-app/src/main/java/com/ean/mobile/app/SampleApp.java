@@ -47,7 +47,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.ean.mobile.Constants;
-import com.ean.mobile.sampleApp.R;
+import com.ean.mobile.R;
 import com.ean.mobile.hotel.Hotel;
 import com.ean.mobile.hotel.HotelImageTuple;
 import com.ean.mobile.hotel.HotelInformation;
@@ -117,7 +117,7 @@ public final class SampleApp extends Application {
      * The hotels found when searching with {@link SampleApp#searchQuery}.
      * Found using the api-lib class {@link com.ean.mobile.hotel.request.ListRequest}.
      */
-    public static final List<Hotel> FOUND_HOTELS = new ArrayList<Hotel>();
+    public static final List<Hotel> FOUND_HOTELS = new ArrayList<>();
 
     /**
      * The in-memory cache of extended hotel information, to make display of the HotelInformation page faster
@@ -144,7 +144,7 @@ public final class SampleApp extends Application {
     public static final Map<HotelImageTuple, HotelImageDrawable> IMAGE_DRAWABLES
             = Collections.synchronizedMap(new HotelImageDrawableMap());
 
-    private static final Set<Reservation> RESERVATIONS = new TreeSet<Reservation>();
+    private static final Set<Reservation> RESERVATIONS = new TreeSet<>();
 
 
     private static final long TEN_MEGABYTES = 10 * 1024 * 1024;
