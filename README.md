@@ -2,7 +2,7 @@
 
 This project contains two components:
 
-- api-lib: An Android optimized java library to handle making calls to [Expedia Affiliate Network API] [EAN].
+- api-lib: An Android library to handle making calls to [Expedia Affiliate Network API] [EAN].
 - sample-app: A sample Android app that uses the api-lib to make all of its calls.
 
 ##Downloading
@@ -16,8 +16,8 @@ It is possible to build the library and the app in a single step using the gradl
 
 ###Requirements
 
-- [Java JDK (1.6+)] [java]
-- [Android SDK] [android-sdk] needs to be installed and both the tools and platform-tools directories are assumed to be on the path. Additionally you'll need to have at least Android version 14 setup (4.0 Ice Cream Sandwich).
+- [Java JDK (1.7+)] [java]
+- [Android Studio][androidstudio] (Recommended) - Great IDE for developing android, and integrates very easily with gradle.
 
 ###Steps
 
@@ -25,17 +25,17 @@ It is possible to build the library and the app in a single step using the gradl
 
 2. Open a command line in the cloned directory: `cd ean-android`
 
-3. Now run the gradle task target to build the api-lib and sample-app: `gradlew :sample-app:assembleDebug`
+3. Now run the gradle task target to build the api-lib and sample-app: `gradlew clean build`
     - The library has now been built and imported into sample-app, and its apk built.
 
-4. The output apk can be found at `sample-app/build/apk/sample-app-debug-unaligned.apk` and can be installed using the command line function `adb install sample-app/build/apk/sample-app-debug-unaligned.apk`.
+4. The output apk can be found at `sample-app/build/outputs/apk/sample-app-debug-unaligned.apk` and can be installed using the command line function `adb install sample-app/build/outputs/apk/sample-app-debug-unaligned.apk`.
     - Alternatively, the gradle task `installDebug` can do steps 3 and 4 in one step: `gradlew :sample-app:installDebug`
 
 ##Building Only The Library
 
 ###Requirements
 
-- [Java JDK (1.6+)] [java]
+- [Java JDK (1.7+)] [java]
 
 ###Steps
 
@@ -43,15 +43,9 @@ It is possible to build the library and the app in a single step using the gradl
 
 2. Open a command line in the cloned directory: `cd ean-android`
 
-3. Run the gradle task install: `gradlew :api-lib:install`
+3. Run the gradle task install: `gradlew :api-lib:build`
 
-3. You should now have built the api-lib and published it to the local maven repository in: `~/.m2/`
-
-4. The main, javadoc, and source jars can now be found in `api-lib/build/libs/`.
-
-####Without Publishing
-
-To build without installing to the local repo, just run the assemble task: `gradlew :api-lib:assemble`.
+3. The output aar can be found in api-lib/build/outputs/aar/api-lib-{debug|release}.aar
 
 ##IDE Setup Tips
 
@@ -59,8 +53,6 @@ Use the appropriate Gradle plugin for your IDE. For Intellij, this is known as J
 
 ###api-lib
 - Add .json as a resource file type. This will allow certain IDEs (Intellij, at least) to include the .json resources in the classpath for the tests that need them.
-
-###sample-app
 
 
 ## More Help
@@ -77,3 +69,4 @@ For a step by step overview of the library and sample app, as well as a guided t
 [android-sdk]: http://developer.android.com/sdk/index.html "Android SDK"
 [docs]: https://github.com/ExpediaInc/ean-android/tree/master/docs "ean-android/docs"
 [mavencentral]: http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22api-lib%22 "api-lib at search.maven.org."
+[androidstudio]: https://developer.android.com/sdk/index.html "Android Studio"

@@ -30,6 +30,7 @@ dependencies {
     androidTestCompile 'junit:junit:4.11'
     androidTestCompile 'org.hamcrest:hamcrest-all:1.3'
     androidTestCompile 'org.powermock:powermock-reflect:1.5.1'
+    androidTestCompile 'org.robolectric:robolectric:2.1.1'
 }
 
 configurations {
