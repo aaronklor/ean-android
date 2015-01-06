@@ -139,6 +139,18 @@ public class ListRequestIntTest extends RequestTestBase {
         checkForDuplicateHotelId(hotelIdsReturned, results);
     }
 
+    @Test
+    public void testSearchForSingleHotel() throws Exception {
+        Set<Long> hotelIdsReturned = new HashSet<Long>();
+        LocalDate[] dateTimes = DateModifier.getAnArrayOfLocalDatesWithOffsets(1, 3);
+
+        ListRequest listRequest = new ListRequest(
+            "140%20West%207th%20Street,%20Cookeville,%20TN%2038501,%20USA", OCCUPANCY, dateTimes[0], dateTimes[1]);
+        HotelList results = RequestProcessor.run(listRequest);
+
+        assertEquals(1, results.hotels.size());
+    }
+
     private void checkForDuplicateHotelId(final Set<Long> hotelIdsReturned, final HotelList results) {
         for (Hotel hotel : results.hotels) {
             assertFalse(hotelIdsReturned.contains(hotel.hotelId));

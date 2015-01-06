@@ -140,20 +140,25 @@ public final class ListRequest extends Request<HotelList> {
         final String outgoingCustomerSessionId = response.optString("customerSessionId");
         final int totalNumberOfResults = response.optJSONObject("HotelList").optInt("@activePropertyCount");
 
-        final JSONArray newHotelJson = response.getJSONObject("HotelList").getJSONArray("HotelSummary");
-        final List<Hotel> newHotels = new ArrayList<Hotel>(newHotelJson.length());
-        for (int i = 0; i < newHotelJson.length(); i++) {
-            try {
-                newHotels.add(new Hotel(newHotelJson.getJSONObject(i)));
-            } catch (MalformedURLException me) {
-                Log.e("Unable to process JSON", me.getMessage());
+        List<Hotel> hotels = Collections.emptyList();
+        JSONObject list = response.getJSONObject("HotelList");
+        try {
+            if (list.optJSONArray("HotelSummary") != null) {
+                final JSONArray newHotelJson = list.getJSONArray("HotelSummary");
+                hotels = new ArrayList<Hotel>(newHotelJson.length());
+                for (int i = 0; i < newHotelJson.length(); i++) {
+                        hotels.add(new Hotel(newHotelJson.getJSONObject(i)));
+                }
+            } else {
+                hotels = Collections.singletonList(new Hotel(list.getJSONObject("HotelSummary")));
             }
+        } catch (MalformedURLException me) {
+            Log.e("Unable to process JSON", me.getMessage());
         }
 
         CommonParameters.customerSessionId = outgoingCustomerSessionId;
 
-        return new HotelList(newHotels,
-            newCacheKey, newCacheLocation, outgoingCustomerSessionId, totalNumberOfResults);
+        return new HotelList(hotels, newCacheKey, newCacheLocation, outgoingCustomerSessionId, totalNumberOfResults);
     }
 
     /**
